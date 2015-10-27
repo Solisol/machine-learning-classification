@@ -17,9 +17,9 @@ public class NaiveBayes {
 
     public NaiveBayes(List<String> categories) {
         this.categories = categories;
-        occurrencesPerWordAndCategory = new HashMap();
-        documentsPerCategory = new HashMap();
-        numberOfWordsPerCategory = new HashMap();
+        this.occurrencesPerWordAndCategory = new HashMap<String,Map<String, Integer>>();
+        this.documentsPerCategory = new HashMap<String, Integer>();
+        this.numberOfWordsPerCategory = new HashMap<String, Integer>();
         setupMaps();
     }
 
