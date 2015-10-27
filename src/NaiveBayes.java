@@ -58,7 +58,6 @@ public class NaiveBayes {
         Map<String, Integer> occurrencesPerWordLocal = occurrencesPerWordAndCategory.get(category);
         String[] words = document.split(" ");
         for (String word : words) {
-            //Count occurrences of word in category
             Integer occurrences = occurrencesPerWordLocal.get(word);
             if (occurrences == null) {
                 occurrencesPerWordLocal.put(word, 1);
@@ -67,7 +66,6 @@ public class NaiveBayes {
             }
 
         }
-        //total number of words in category
         numberOfWordsPerCategory.put(category, numberOfWordsPerCategory.get(category) + words.length);
         totalWords = totalWords + words.length;
         documentsPerCategory.put(category, documentsPerCategory.get(category) + 1);
@@ -89,14 +87,11 @@ public class NaiveBayes {
     * @param document, The document to classify
     */
     public String classify(String document){
-        //calculate probability for each category given the document
         String bestCategory = "";
         double bestProbability = 0;
         double probability = 0;
         for (String category : categories) {
-            System.out.print(category + " ");
             probability = probabilty(category, document);
-            System.out.println(probability);
             if (probability > bestProbability) {
                 bestProbability = probability;
                 bestCategory = category;
