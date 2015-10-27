@@ -11,14 +11,12 @@ public class NaiveBayes {
 
     int totalWords = 0;
     int totalDocuments = 0;
-    int totalCategories;
     Map<String,Map<String, Integer>> occurrencesPerWordAndCategory;
     Map<String, Integer> documentsPerCategory;
     Map<String, Integer> numberOfWordsPerCategory;
 
     public NaiveBayes(List<String> categories) {
         this.categories = categories;
-        totalCategories = categories.size();
         occurrencesPerWordAndCategory = new HashMap();
         documentsPerCategory = new HashMap();
         numberOfWordsPerCategory = new HashMap();
