@@ -136,7 +136,7 @@ public class NaiveBayes {
         double probability = 1;
         String[] words = document.split(" ");
         for (String word : words) {
-            probability = probability * wordBelongsCategoryProbability(category, word);
+            probability = probability * wordBelongsToCategoryProbability(category, word);
         }
         return probability;
     }
@@ -150,7 +150,7 @@ public class NaiveBayes {
     * @param category, The category for which the word will be evaluated
     * @params word, The word which is being classified
     */
-    private double wordBelongsCategoryProbability(String category, String word) {
+    private double wordBelongsToCategoryProbability(String category, String word) {
         Integer wordCount = occurrencesPerWordAndCategory.get(category).get(word);
         if (wordCount == null) {
             wordCount = 1;
