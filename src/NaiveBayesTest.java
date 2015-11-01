@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by sol on 2015-10-21.
@@ -6,7 +8,9 @@ import java.util.Arrays;
 public class NaiveBayesTest {
 
     public static void main(String[] args) {
-        NaiveBayes naiveBayes = new NaiveBayes(Arrays.asList("saga", "horror"));
+        Set<String> categorySet = new HashSet<String>();
+        categorySet.addAll(Arrays.asList("saga", "horror"));
+        NaiveBayes naiveBayes = new NaiveBayes(categorySet);
         naiveBayes.train("horror", "it was scary as shit once");
         naiveBayes.train("saga", "once upon a time there was a girl");
         naiveBayes.train("saga", "once upon a time there was a dog");

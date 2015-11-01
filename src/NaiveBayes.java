@@ -1,6 +1,6 @@
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by sol on 2015-10-21.
@@ -8,7 +8,7 @@ import java.util.Map;
 public class NaiveBayes {
 
     //All possible categories
-    List<String> categories;
+    Set<String> categories;
 
     //Total word count
     int totalWords = 0;
@@ -21,7 +21,7 @@ public class NaiveBayes {
     //Amount of words per category
     Map<String, Integer> numberOfWordsPerCategory;
 
-    public NaiveBayes(List<String> categories) {
+    public NaiveBayes(Set<String> categories) {
         this.categories = categories;
         this.occurrencesPerWordAndCategory = new HashMap<String,Map<String, Integer>>();
         this.documentsPerCategory = new HashMap<String, Integer>();
