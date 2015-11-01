@@ -134,9 +134,19 @@ public class NaiveBayes {
     */
     private double documentBelongsToCategoryProbability(String category, String document) {
         double probability = 1;
+        Map<String, Integer> occurrencesPerWordLocal = new HashMap<String, Integer>();
         String[] words = document.split(" ");
         for (String word : words) {
-            probability = probability * wordBelongsToCategoryProbability(category, word);
+            Integer occurrences = occurrencesPerWordLocal.get(word);
+            if (occurrences == null) {
+                occurrencesPerWordLocal.put(word, 1);
+            } else {
+                occurrencesPerWordLocal.put(word, occurrences + 1);
+            }
+
+        }
+        for (String word : occurrencesPerWordLocal.keySet()) {
+            probability = probability * wordBelongsToCategoryProbability(category, word, occurrencesPerWordLocal.get(word));
         }
         return probability;
     }
@@ -150,12 +160,12 @@ public class NaiveBayes {
     * @param category, The category for which the word will be evaluated
     * @params word, The word which is being classified
     */
-    private double wordBelongsToCategoryProbability(String category, String word) {
+    private double wordBelongsToCategoryProbability(String category, String word, int occurrences) {
         Integer wordCount = occurrencesPerWordAndCategory.get(category).get(word);
         if (wordCount == null) {
             wordCount = 1;
         } else {
-            wordCount++;
+            wordCount+= occurrences;
         }
         return (double) wordCount / numberOfWordsPerCategory.get(category);
     }
