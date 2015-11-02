@@ -18,12 +18,17 @@ public class NaiveBayes {
     Map<String, Integer> documentsPerCategory;
     //Amount of words per category
     Map<String, Integer> numberOfWordsPerCategory;
+    //Filler words
+    Set<String> stopWords;
+
+    private static final String[] STOP_WORDS = {"a","about","above","after","again","against","all","am","an","and","any","are","aren't","as","at","be","because","been","before","being","below","between","both","but","by","can't","cannot","could","couldn't","did","didn't","do","does","doesn't","doing","don't","down","during","each","few","for","from","further","had","hadn't","has","hasn't","have","haven't","having","he","he'd","he'll","he's","her","here","here's","hers","herself","him","himself","his","how","how's","i","i'd","i'll","i'm","i've","if","in","into","is","isn't","it","it's","its","itself","let's","me","more","most","mustn't","my","myself","no","nor","not","of","off","on","once","only","or","other","ought","our","oursourselves","out","over","own","same","shan't","she","she'd","she'll","she's","should","shouldn't","so","some","such","than","that","that's","the","their","theirs","them","themselves","then","there","there's","these","they","they'd","they'll","they're","they've","this","those","through","to","too","under","until","up","very","was","wasn't","we","we'd","we'll","we're","we've","were","weren't","what","what's","when","when's","where","where's","which","while","who","who's","whom","why","why's","with","won't","would","wouldn't","you","you'd","you'll","you're","you've","your","yours","yourself","yourselves"};
 
     public NaiveBayes(Set<String> categories) {
         this.categories = categories;
         this.occurrencesPerWordAndCategory = new HashMap<String,Map<String, Integer>>();
         this.documentsPerCategory = new HashMap<String, Integer>();
         this.numberOfWordsPerCategory = new HashMap<String, Integer>();
+        this.stopWords = new HashSet<String>(Arrays.asList(STOP_WORDS));
         setupCounters();
     }
 
@@ -131,7 +136,7 @@ public class NaiveBayes {
     * @param document, The document which is being classified
     */
     private double documentBelongsToCategoryProbability(String category, String document) {
-        double probability = 1;
+        double probability = 1.0;
         String[] words = parseWords(document);
         for (String word : words) {
             probability = probability * wordBelongsToCategoryProbability(category, word);
@@ -163,7 +168,10 @@ public class NaiveBayes {
         List<String> words = new ArrayList<String>();
         for (int i = 0; i < allWords.length; i++) {
             String word = allWords[i];
-            words.add(word.replaceAll("[^a-zA-Z\']", "").toLowerCase());
+            word = word.replaceAll("[^a-zA-Z\']", "").toLowerCase();
+            if (!stopWords.contains(word) && word != "") {
+                words.add(word);
+            }
         }
         return words.toArray(new String[words.size()]);
     }
