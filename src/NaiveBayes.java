@@ -56,7 +56,7 @@ public class NaiveBayes {
     */
     public void train(String category, String document){
         Map<String, Integer> occurrencesPerWordLocal = occurrencesPerWordAndCategory.get(category);
-        String[] words = document.split(" ");
+        String[] words = parseWords(document);
         for (String word : words) {
             Integer occurrences = occurrencesPerWordLocal.get(word);
             if (occurrences == null) {
@@ -134,7 +134,7 @@ public class NaiveBayes {
     */
     private double documentBelongsToCategoryProbability(String category, String document) {
         double probability = 1;
-        String[] words = document.split(" ");
+        String[] words = parseWords(document);
         for (String word : words) {
             probability = probability * wordBelongsToCategoryProbability(category, word);
         }
@@ -158,5 +158,9 @@ public class NaiveBayes {
             wordCount++;
         }
         return (double) wordCount / numberOfWordsPerCategory.get(category);
+    }
+
+    private String[] parseWords(String document) {
+        return document.split(" ");
     }
 }
