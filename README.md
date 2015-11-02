@@ -16,12 +16,12 @@ How is that done? It starts with teaching the classifier how emails from the dif
 ## Tutorial
 
 ### 1. Install Java 
-Install Java 1.6 or greater (preferable latest)
+[Install Java 1.6](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or greater (preferable latest)
 
 ### 2. Get the code
 Either clone with git or download zip from github
-`git clone whatever` and then `git checkout tutorial`
-Or download zip from <copylinkfromgithubandpaste>
+`git clone git@github.com:Solisol/machine-learning-classification.git` and then `git checkout tutorial`
+Or download zip from [github](https://github.com/Solisol/machine-learning-classification/archive/tutorial.zip).
 
 ### 3. Unzip resources
 Unzip machine-learning-classification/resources/amazon-balanced-6cats.zip into the same directory
