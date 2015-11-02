@@ -3,7 +3,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sol on 2015-11-01.
@@ -31,13 +33,25 @@ public class NaiveBayesOnReviewsTest {
         //Classify reviews and count the amount of correct classifications
         int count = 0;
         String result;
+        Map<Category, Integer> correctPerCategory = new HashMap<Category, Integer>();
+        Map<Category, Integer> unclassified = new HashMap<Category, Integer>();
+
         for (Review review : classificationReviews) {
             result = naiveBayes.classify(review.text);
             if (result.equals(review.category.name)) {
                 count++;
+                int numberOfCorrectClassifications = correctPerCategory.get(review.category) != null ? correctPerCategory.get(review.category) + 1 : 1;
+                correctPerCategory.put(review.category, numberOfCorrectClassifications);
+            } else if (result.isEmpty()) {
+                int numberOfUnclassified = unclassified.get(review.category) != null ? unclassified.get(review.category) + 1 : 1;
+                unclassified.put(review.category, numberOfUnclassified);
             }
         }
-        System.out.println(count + " out of " + classificationReviews.size());
+        System.out.println(count + " out of " + classificationReviews.size() + " is correctly classified!");
+        System.out.println("Number of correct classifications per category: ");
+        System.out.println(correctPerCategory);
+        System.out.println("Number of unclassified per category: ");
+        System.out.println(unclassified);
     }
 
     /**
