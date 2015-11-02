@@ -27,8 +27,12 @@ P(A|B) = P(A) * P(B|A)
 
 `P(A)`, the probability of category A, is calculated through dividing the amount of documents in category A by the total amount of documents.
 
-`P(B|A)`, the likelihood of document B given category A is calculated by multiplying the likelihood of each word in B given the category A. Calculating the likelihood of a word X given category A `P(X|A)`
-is done by dividing the amount of occurrences of word X in category A by the total amount of words in that category.
+```
+P(B|A) = P(x_1|A) * P(x_2|A) * ... * P(x_i|A)
+```
+
+`P(B|A)`, the likelihood of document B given category A can be described as the product of the likelihood of each word in B to to a appear in documents of category A. Each word's likelihood as a category A can be calculated by dividing the amount occurrences of word X in category A by the total amount of words in category A.
+
 
 ### Data set used in tutorial
 
