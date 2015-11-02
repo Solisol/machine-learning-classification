@@ -1,7 +1,10 @@
 # machine-learning-classification
 ## An Introduction to Machine Learning Classification
-What happens when you train the algorithm?
-Simply put, you let the algorithm look at part of your data set, and then for each data point it will learn the correct answer.
+Machine learning is used to solve various problems of predictions. With the help of machine learning it's possible to predict things like waiting time in emergency rooms, equipment failures and detect network intrusion.
+It's all about training an algorithm on training data and then letting it apply it's knowledge in making predictions about unknown data.
+One common use is the prediction of spam mails. By teaching an algorithm the characteristics of a spam mail, it can then predict if an incoming mail is spam and set that classification to the mail. This type of machine learning we'll look into in this tutorial; Machine Learning Classification.
+So what is the goal with machine learning classification? Given an input, you want to be able to classify it as belonging to one of all known categories. In the case of spam, your input is the email with its topic, message, sender and all information accessible in that email. Given that input the classifier should classify it as either of the categories spam and not_spam.
+How is that done? It start with teaching the classifier how emails from the different categories may look. When it has learned enough, it can be used to classify email based on what it has learned.
 
 ### Introduction to Naive Bayes
 
