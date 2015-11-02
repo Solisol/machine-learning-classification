@@ -163,6 +163,40 @@ public class NaiveBayes {
         return (double) wordCount / numberOfWordsPerCategory.get(category);
     }
 
+    /**
+    * Parses the words of the document.
+    * Pseudo code (basic):
+    *   return document.split
+    *
+    * Pseudo code improvement 1 (to lower case):
+    *   all_words = document.split
+    *   words = []
+    *   for each word in all_words
+    *       word = word.to_lower_case
+    *       words.add(word)
+    *   end
+    *
+    * Pseudo code improvement 2 (exclude non alphabetical characters):
+    *   all_words = document.split
+    *   words = []
+    *   for each word in all_words
+    *       word = word.to_lower_case
+    *       word = word.remove_non_alphabetical_characters (regex example [^a-zA-Z\'])
+    *       words.add(word)
+    *   end
+    *
+    * Pseudo code improvement 3 (exclude stop words):
+    *   all_words = document.split
+    *   words = []
+    *   for each word in words
+    *       word = word.to_lower_case
+    *       word = word.remove_non_alphabetical_characters
+    *       if !stop_words.contains(word)
+    *           words.add(word)
+    *       end
+    *   end
+    * @param document, The document to be parsed.
+    */
     private String[] parseWords(String document) {
         String[] allWords = document.split(" ");
         List<String> words = new ArrayList<String>();
