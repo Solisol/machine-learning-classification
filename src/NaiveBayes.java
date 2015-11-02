@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by sol on 2015-10-21.
@@ -161,6 +159,12 @@ public class NaiveBayes {
     }
 
     private String[] parseWords(String document) {
-        return document.split(" ");
+        String[] allWords = document.split(" ");
+        List<String> words = new ArrayList<String>();
+        for (int i = 0; i < allWords.length; i++) {
+            String word = allWords[i];
+            words.add(word.replaceAll("[^a-zA-Z\']", "").toLowerCase());
+        }
+        return words.toArray(new String[words.size()]);
     }
 }
