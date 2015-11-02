@@ -15,7 +15,6 @@ Naive Bayes is a classifier based on Bayes' theorem. Some of you might recognize
 
 ```
 P(A|B) = (P(A) * P(B|A)) / P(B)
-
 ```
 
 `P(A)` calculates the probability of category A. `P(B|A)` is the likelihood of document B given category A. And `P(B)` is the probability of document B, independent of any category.
