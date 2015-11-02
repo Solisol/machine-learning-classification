@@ -46,9 +46,9 @@ public class NaiveBayes {
     /**
     * Adds the given document to the training set
     * Pseudo code:
-    *   word_occurences = occurences_per_word_and_category[category]
+    *   word_occurrences = occurrences_per_word_and_category[category]
     *   for each word in document
-    *       word_occurences[word] += 1
+    *       word_occurrences[word] += 1
     *   end
     *   number_of_words_per_category[category] += words.length
     *   documents_per_category[category] += 1
@@ -94,7 +94,7 @@ public class NaiveBayes {
         double bestProbability = 0;
         double probability = 0;
         for (String category : categories) {
-            probability = probabilty(category, document);
+            probability = probability(category, document);
             if (probability > bestProbability) {
                 bestProbability = probability;
                 bestCategory = category;
@@ -110,7 +110,7 @@ public class NaiveBayes {
     * @param category, the category for which the document should be evaluated
     * @param document, The document which is being classified
     */
-    private double probabilty(String category, String document) {
+    private double probability(String category, String document) {
         return documentBelongsToCategoryProbability(category, document) * isCategoryProbability(category);
     }
 
@@ -147,7 +147,7 @@ public class NaiveBayes {
     /**
     * Returns the probability that a word belongs to a given category
     * Pseudo code:
-    *   word_count = occurences_per_word_and_category[category][word]
+    *   word_count = occurrences_per_word_and_category[category][word]
     *   word_count += 1 //To ensure that the probability is never zero
     *   return word_count / number_of_words_per_category[category]
     * @param category, The category for which the word will be evaluated
