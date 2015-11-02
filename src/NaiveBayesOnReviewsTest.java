@@ -10,14 +10,16 @@ import java.util.List;
  */
 public class NaiveBayesOnReviewsTest {
 
-    private static final String PATH_TO_RESOURCE = "/home/sol/code/machine-learning-classification/resources/amazon-balanced-6cats";
-
     private static final List<Review> trainingReviews = new ArrayList<Review>();
     private static final List<Review> classificationReviews = new ArrayList<Review>();
 
     public static void main(String[] args) {
+        //Read parameters
+        String pathToResources = args[0];
+        Double trainingSetPercentage = Double.valueOf(args[1]);
+
         //Read reviews from files and load into training list and classification list
-        loadReviews(PATH_TO_RESOURCE);
+        loadReviews(pathToResources, trainingSetPercentage);
 
         NaiveBayes naiveBayes = new NaiveBayes(Category.getNames());
 
@@ -42,19 +44,20 @@ public class NaiveBayesOnReviewsTest {
      * Loads all available reviews from file
      * @param filePath
      */
-    private static void loadReviews(String filePath) {
+    private static void loadReviews(String filePath, double trainingSetPercentage) {
         File folder = new File(filePath);
         File[] listOfFiles = folder.listFiles();
 
+        double percentage = (trainingSetPercentage * listOfFiles.length);
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile() && listOfFiles[i].getName().contains(".txt")) {
-                if (i < 100) {
+                if (i < percentage) {
                     trainingReviews.add(readReviewFromFile(listOfFiles[i]));
                 } else {
                     classificationReviews.add(readReviewFromFile(listOfFiles[i]));
                 }
             } else if (listOfFiles[i].isDirectory()) {
-                loadReviews(listOfFiles[i].getAbsolutePath());
+                loadReviews(listOfFiles[i].getAbsolutePath(), trainingSetPercentage);
             }
         }
     }
