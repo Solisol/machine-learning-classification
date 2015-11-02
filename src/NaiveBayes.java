@@ -47,7 +47,7 @@ public class NaiveBayes {
     * Adds the given document to the training set
     * Pseudo code:
     *   word_occurrences = occurrences_per_word_and_category[category]
-    *   for each word in document
+    *   for each word in document //Hint, use parseWords
     *       word_occurrences[word] += 1
     *   end
     *   number_of_words_per_category[category] += words.length
@@ -105,7 +105,7 @@ public class NaiveBayes {
     * Returns the probability that a document belongs to a given category
     * Pseudo code:
     *   probability = 1
-    *   for each word in words
+    *   for each word in words //Hint, use parseWords
     *       probability = probability * word_belongs_to_category(category, word)
     *   end
     *   return probability
