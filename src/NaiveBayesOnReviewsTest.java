@@ -34,22 +34,29 @@ public class NaiveBayesOnReviewsTest {
         int count = 0;
         String result;
         Map<Category, Integer> correctPerCategory = new HashMap<Category, Integer>();
+        Map<Category, Integer> wrongPerCategory = new HashMap<Category, Integer>();
         Map<Category, Integer> unclassified = new HashMap<Category, Integer>();
 
         for (Review review : classificationReviews) {
             result = naiveBayes.classify(review.text);
-            if (result.equals(review.category.name)) {
+            Category expectedCategory = review.category;
+            if (result.equals(expectedCategory.name)) {
                 count++;
-                int numberOfCorrectClassifications = correctPerCategory.get(review.category) != null ? correctPerCategory.get(review.category) + 1 : 1;
-                correctPerCategory.put(review.category, numberOfCorrectClassifications);
+                int numberOfCorrectClassifications = correctPerCategory.get(expectedCategory) != null ? correctPerCategory.get(expectedCategory) + 1 : 1;
+                correctPerCategory.put(expectedCategory, numberOfCorrectClassifications);
             } else if (result.isEmpty()) {
-                int numberOfUnclassified = unclassified.get(review.category) != null ? unclassified.get(review.category) + 1 : 1;
-                unclassified.put(review.category, numberOfUnclassified);
+                int numberOfUnclassified = unclassified.get(expectedCategory) != null ? unclassified.get(expectedCategory) + 1 : 1;
+                unclassified.put(expectedCategory, numberOfUnclassified);
+            } else {
+                int numberOfWrongClassifications = wrongPerCategory.get(expectedCategory) != null ? wrongPerCategory.get(expectedCategory) + 1 : 1;
+                wrongPerCategory.put(expectedCategory, numberOfWrongClassifications);
             }
         }
         System.out.println(count + " out of " + classificationReviews.size() + " is correctly classified!");
         System.out.println("Number of correct classifications per category: ");
         System.out.println(correctPerCategory);
+        System.out.println("Number of wrong classifications per category: ");
+        System.out.println(wrongPerCategory);
         System.out.println("Number of unclassified per category: ");
         System.out.println(unclassified);
     }
