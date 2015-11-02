@@ -11,6 +11,26 @@ How is that done? It starts with teaching the classifier how emails from the dif
 
 ### Introduction to Naive Bayes
 
+Naive Bayes is a classifier based on Bayes' theorem. Some of you might recognize it from a statistic course you've taken, but no worries if you haven't - it all narrows down to some basic arithmetic. The theorem is used to describe the probability of A given some evidence B. The theorem is called naive because it assumes that all features in evidence B can be treated as independent. In our case we want to calculate the probability of category A given the evidence - the words in document B.
+
+```
+P(A|B) = (P(A) * P(B|A)) / P(B)
+
+```
+
+`P(A)` calculates the probability of category A. `P(B|A)` is the likelihood of document B given category A. And `P(B)` is the probability of document B, independent of any category.
+
+We are interested in finding the category with the highest probability for each document. Each document will be evaluated for every category. For each document will `P(B)` be the same and can therefore be discarded from our calculations - leaving us with:
+
+```
+P(A|B) = P(A) * P(B|A)
+```
+
+`P(A)`, the probability of category A, is calculated through dividing the amount of documents in category A by the total amount of documents.
+
+`P(B|A)`, the likelihood of document B given category A is calculated by multiplying the likelihood of each word in B given the category A. Calculating the likelihood of a word X given category A `P(X|A)`
+is done by dividing the amount of occurrences of word X in category A by the total amount of words in that category.
+
 ### Data set used in tutorial
 
 ## Tutorial
