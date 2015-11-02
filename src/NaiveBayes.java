@@ -58,21 +58,7 @@ public class NaiveBayes {
     * @param document, The document to add to the training set
     */
     public void train(String category, String document){
-        Map<String, Integer> occurrencesPerWordLocal = occurrencesPerWordAndCategory.get(category);
-        String[] words = parseWords(document);
-        for (String word : words) {
-            Integer occurrences = occurrencesPerWordLocal.get(word);
-            if (occurrences == null) {
-                occurrencesPerWordLocal.put(word, 1);
-            } else {
-                occurrencesPerWordLocal.put(word, occurrences + 1);
-            }
-
-        }
-        numberOfWordsPerCategory.put(category, numberOfWordsPerCategory.get(category) + words.length);
-        totalWords = totalWords + words.length;
-        documentsPerCategory.put(category, documentsPerCategory.get(category) + 1);
-        totalDocuments++;
+        // TODO implement train
     }
 
     /**
@@ -90,17 +76,8 @@ public class NaiveBayes {
     * @param document, The document to classify
     */
     public String classify(String document){
-        String bestCategory = "";
-        double bestProbability = 0;
-        double probability = 0;
-        for (String category : categories) {
-            probability = probability(category, document);
-            if (probability > bestProbability) {
-                bestProbability = probability;
-                bestCategory = category;
-            }
-        }
-        return bestCategory;
+        //TODO implement classify
+        return "";
     }
 
     /**
@@ -111,7 +88,7 @@ public class NaiveBayes {
     * @param document, The document which is being classified
     */
     private double probability(String category, String document) {
-        return documentBelongsToCategoryProbability(category, document) * isCategoryProbability(category);
+        return 0; //Placeholder
     }
 
     /**
@@ -121,7 +98,7 @@ public class NaiveBayes {
     * @param category, The category for which the probability is calculated
     */
     private double isCategoryProbability(String category) {
-        return (double) documentsPerCategory.get(category) / totalDocuments;
+        return 0; //Placeholder
     }
 
     /**
@@ -136,12 +113,7 @@ public class NaiveBayes {
     * @param document, The document which is being classified
     */
     private double documentBelongsToCategoryProbability(String category, String document) {
-        double probability = 1.0;
-        String[] words = parseWords(document);
-        for (String word : words) {
-            probability = probability * wordBelongsToCategoryProbability(category, word);
-        }
-        return probability;
+        return 0; //Placeholder
     }
 
     /**
@@ -153,13 +125,7 @@ public class NaiveBayes {
     * @params word, The word which is being classified
     */
     private double wordBelongsToCategoryProbability(String category, String word) {
-        Integer wordCount = occurrencesPerWordAndCategory.get(category).get(word);
-        if (wordCount == null) {
-            wordCount = 1;
-        } else {
-            wordCount++;
-        }
-        return (double) wordCount / (numberOfWordsPerCategory.get(category) + 1);
+        return 0; //Placeholder
     }
 
     /**
@@ -198,14 +164,6 @@ public class NaiveBayes {
     */
     private String[] parseWords(String document) {
         String[] allWords = document.split(" ");
-        List<String> words = new ArrayList<String>();
-        for (int i = 0; i < allWords.length; i++) {
-            String word = allWords[i];
-            word = word.replaceAll("[^a-zA-Z\']", "").toLowerCase();
-            if (!stopWords.contains(word) && word != "") {
-                words.add(word);
-            }
-        }
-        return words.toArray(new String[words.size()]);
+        return allWords;
     }
 }
