@@ -124,8 +124,7 @@ end function
 ```
 function wordBelongsToCategoryProbability(category, word)
     word_count = occurrences_per_word_and_category[category][word]
-    word_count += 1 //To ensure that the probability is never zero
-    return word_count / number_of_words_per_category[category]
+    return (word_count + 1) / (number_of_words_per_category[category] + 1)
 end function
 ```
 
