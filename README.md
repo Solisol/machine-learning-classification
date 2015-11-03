@@ -38,6 +38,8 @@ P(B|A) = P(x_1|A) * P(x_2|A) * ... * P(x_i|A)
 
 In this tutorial we'll experiment with the Naive Bayes classifier. You'll by the guidance of our pseudo code implement your own trainer and classifier! For the tutorial we've borrowed a data set created by [Richard Johansson based on Amazon customer reviews](http://spraakbanken.gu.se/swe/personal/richard). Using the trainer on a subset of the data you'll teach the classifier the characteristics of each category. Then when you run the classifier on the remaining reviews it should classify each review into one of the following categories: Book, Camera, DVD, Health, Music or Software.
 
+We've provided our solution the master branch if you feel that you're in need of a sneak peak. ;)
+
 ### 1. Install Java 
 [Install Java 1.6](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or greater (preferable latest)
 
