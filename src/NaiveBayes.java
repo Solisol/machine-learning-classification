@@ -148,8 +148,7 @@ public class NaiveBayes {
     * Returns the probability that a word belongs to a given category
     * Pseudo code:
     *   word_count = occurrences_per_word_and_category[category][word]
-    *   word_count += 1 //To ensure that the probability is never zero
-    *   return word_count / number_of_words_per_category[category]
+    *   return word_count + 1/ number_of_words_per_category[category] + 1
     * @param category, The category for which the word will be evaluated
     * @params word, The word which is being classified
     */
@@ -160,7 +159,7 @@ public class NaiveBayes {
         } else {
             wordCount++;
         }
-        return (double) wordCount / numberOfWordsPerCategory.get(category);
+        return (double) wordCount / (numberOfWordsPerCategory.get(category) + 1);
     }
 
     /**
