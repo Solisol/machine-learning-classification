@@ -20,7 +20,7 @@ P(A|B) = (P(A) * P(B|A)) / P(B)
 
 `P(A)` calculates the probability of category A. `P(B|A)` is the likelihood of document B given category A. And `P(B)` is the probability of document B, independent of any category.
 
-We are interested in finding the category with the highest probability for each document. Each document will be evaluated for every category. For each document will `P(B)` be the same and can therefore be discarded from our calculations - leaving us with:
+We are interested in finding the category with the highest probability for each document. Each document will be evaluated for every category. For each category the probability of a document will be the same and can therefore be discarded from our calculations - leaving us with:
 
 ```
 P(A|B) = P(A) * P(B|A)
@@ -32,7 +32,7 @@ P(A|B) = P(A) * P(B|A)
 P(B|A) = P(x_1|A) * P(x_2|A) * ... * P(x_i|A)
 ```
 
-`P(B|A)`, the likelihood of document B given category A can be described as the product of the likelihood of each word in B to to a appear in documents of category A. Each word's likelihood as a category A can be calculated by dividing the amount occurrences of word X in category A by the total amount of words in category A.
+`P(B|A)`, the likelihood of document B given category A can be described as: **The product of the likelihood of each word in document B to appear in documents of category A.** Each word's likelihood can be calculated by dividing the amount occurrences of the word in category A by the total amount of words in category A.
 
 
 ### Data set used in tutorial
