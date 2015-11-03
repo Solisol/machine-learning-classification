@@ -34,14 +34,9 @@ P(B|A) = P(x_1|A) * P(x_2|A) * ... * P(x_i|A)
 
 `P(B|A)`, the likelihood of document B given category A can be described as: **The product of the likelihood of each word in document B to appear in documents of category A.** Each word's likelihood can be calculated by dividing the amount occurrences of the word in category A by the total amount of words in category A.
 
-
-### Data set used in tutorial
-
-In this tutorial we want to take a look at some reviews made on Amazon. The reviews can be found in the zipped file under resources and are made on items belonging to one of the following categories; Book, Camera, DVD, Health, Music and Software.
-For each category there are a folder with positive reviews and a folder with negative reviews. As a starter we will not care whether a review is positive or negative, but just use all of them.
-The reviews are real reviews produced by users, so one review are not the exact copy of another. 
-
 ## Tutorial
+
+In this tutorial we'll experiment with the Naive Bayes classifier. You'll by the guidance of our pseudo code implement your own trainer and classifier! For the tutorial we've borrowed a data set created by [Richard Johansson based on Amazon customer reviews](http://spraakbanken.gu.se/swe/personal/richard). Using the trainer on a subset of the data you'll teach the classifier the characteristics of each category. Then when you run the classifier on the remaining reviews it should classify each review into one of the following categories: Book, Camera, DVD, Health, Music or Software.
 
 ### 1. Install Java 
 [Install Java 1.6](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or greater (preferable latest)
