@@ -1,5 +1,6 @@
 # machine-learning-classification
 ## An Introduction to Machine Learning Classification
+
 Machine learning is used to solve various problems of predictions. With the help of machine learning it's possible to predict things like waiting time in emergency rooms, equipment failures and detect network intrusion.
 
 It's all about training an algorithm on training data and then apply its knowledge in making predictions about unknown data.
@@ -35,6 +36,10 @@ P(B|A) = P(x_1|A) * P(x_2|A) * ... * P(x_i|A)
 
 
 ### Data set used in tutorial
+
+In this tutorial we want to take a look at some reviews made on Amazon. The reviews can be found in the zipped file under resources and are made on items belonging to one of the following categories; Book, Camera, DVD, Health, Music and Software.
+For each category there are a folder with positive reviews and a folder with negative reviews. As a starter we will not care whether a review is positive or negative, but just use all of them.
+The reviews are real reviews produced by users, so one review are not the exact copy of another. 
 
 ## Tutorial
 
